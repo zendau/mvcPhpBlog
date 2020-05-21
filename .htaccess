@@ -1,4 +1,4 @@
-AddDefaultCharset UTF-8
+AddDefaultCharset WINDOWS-1251
 
 RewriteEngine On
 RewriteBase /
