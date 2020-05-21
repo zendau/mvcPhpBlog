@@ -1,0 +1,98 @@
+let data;
+
+$.ajax({
+    type: "POST",
+    url: "/user/news/1",
+    data: { num: "num"}
+    }).done(function( num ) {
+       data = JSON.parse(num)
+});  
+
+
+$(document).ready(function(){
+    $('.section-photo__slider').slick();
+
+    $("#login").click(function(){
+        $(".overlay").addClass("active")
+        $(".section-login").addClass("active")
+    })
+
+    $(".section-login__close").click(function(){
+        $(".overlay").removeClass("active")
+        $(".section-login").removeClass("active")
+    })
+
+    $("#close").click(function(){
+        $(".overlay").removeClass("active")
+        $(".section-modal").removeClass("active--block ")
+    })
+   
+    $(".section-login__reset").click(function(){
+        $(".section-login").removeClass("active")
+        $(".section-reset").addClass("active")
+    })
+
+    $(".section-reset__close").click(function(){
+        $(".section-reset").removeClass("active")
+        $(".overlay").removeClass("active")
+    })
+
+    $("#inp1").keyup(()=>{
+        let str = $("#inp1").val()
+        if(!str.match(/^[А-я]{0,11}$/)){
+            alert("Имя должно быть написано кирилицей и длинною до 15 символов")
+            $("#inp1").val("")
+        }
+        console.log($("#inp1").val())
+    })
+
+    // $(".section-form__review-form").keyup(()=>{
+    //     let str = $(".section-form__review-form").val()
+    //     console.log(str)
+    //     if(!str.match(/^[А-яA-z ]{0,500}$/)){
+    //         alert("Текст должен быть написан кирилицей и латинице без спец. символов длинною до 500 символов")
+    //         $(".section-form__review-form").val("")
+    //     }
+    // })
+
+    $(".section-news__search-input").focus(()=>{
+        $(".section-news__search-list").addClass("section-news__search-list--active")
+    })
+    $(".section-news__search-input").blur(()=>{
+        $(".section-news__search-list").removeClass("section-news__search-list--active")
+    })
+    $(".section-news__search-list").hover(()=>{
+        $(".section-news__search-list").addClass("section-news__search-list--active")
+    })
+   
+    $("#phone").mask("(999) 999-9999");
+  
+    $(".section-news__search-input").keyup(()=>{ 
+        let search = $(".section-news__search-input").val()
+        if(search.trim()){
+            search = search[0].toUpperCase()+search.substring(1)
+            console.log(search)
+            let res = data.map((x, i) => [x['title'].indexOf(search), i]).filter(x => x[0] == 0)
+            $(".section-news__search-list-item").remove()
+            if(res.length == 0){
+                $(".section-news__search-list").append("<li class='section-news__search-list-item'><a href='#'>Результаты не найдены</a></li>");
+            }
+            else if(res.length > 5){
+                let len = res.length - 4
+                res = res.slice(0,4)
+                res.forEach((x,i)=> {
+                    $(".section-news__search-list").append("<li class='section-news__search-list-item'><a href='/user/post/"+data[x[1]]['id']+"'>"+data[x[1]]['title']+"</a></li>");
+                })
+                $(".section-news__search-list").append("<li class='section-news__search-list-item'><a href='#'>И ещё "+len+" результатов</a></li>");
+            }else {
+                res.forEach((x,i)=> {
+                    $(".section-news__search-list").append("<li class='section-news__search-list-item'><a href='/user/post/"+data[x[1]]['id']+"'>"+data[x[1]]['title']+"</a></li>");
+                    
+                })
+            }
+        }else {
+            $(".section-news__search-list-item").remove()
+        }
+    })    
+
+});

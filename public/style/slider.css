@@ -1,0 +1,35 @@
+.slick-list {
+    overflow: hidden;
+}
+
+.slick-track{
+    display: flex;
+}
+
+.slick-arrow{
+    position: relative;
+}
+
+.slick-arrow.slick-prev{
+    position: absolute;
+    left: -50px;
+}
+
+.slick-arrow.slick-prev::before {
+    content: url(../img/angle-left-solid.svg);
+    display: block;
+    height: 30px;
+    width: 30px;
+}
+
+.slick-arrow.slick-next{
+    right: -50px;
+    position: absolute;
+}
+
+.slick-arrow.slick-next::before {
+    content: url(../img/angle-right-solid.svg);
+    display: block;
+    height: 30px;
+    width: 30px;
+}
