@@ -10,7 +10,8 @@ class Db {
 	
 	public function __construct() {
 		$config = require 'application/config/db.php';
-		$this->db = new PDO('mysql:host='.$config['host'].';dbname='.$config['name'].'', $config['user'], $config['password'].';charset=utf8');
+		$this->db = new PDO('mysql:host='.$config['host'].';dbname='.$config['name'].'', $config['user'], $config['password']);
+		$this->db->exec('SET NAMES utf8');
 	}
 
 	public function query($sql, $params = []) {
