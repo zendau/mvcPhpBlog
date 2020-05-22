@@ -37,23 +37,70 @@ $(document).ready(function(){
         $(".overlay").removeClass("active")
     })
 
-    $("#inp1").keyup(()=>{
-        let str = $("#inp1").val()
-        if(!str.match(/^[А-я]{0,11}$/)){
-            alert("Имя должно быть написано кирилицей и длинною до 15 символов")
-            $("#inp1").val("")
-        }
-        console.log($("#inp1").val())
-    })
+    $.validator.addMethod("ruLet", function(value, element) {
+        return /^[А-яЁё]{0,16}$/.test(value);
+      },
+      "Имя может содержать только русские буквы")
 
-    // $(".section-form__review-form").keyup(()=>{
-    //     let str = $(".section-form__review-form").val()
-    //     console.log(str)
-    //     if(!str.match(/^[А-яA-z ]{0,500}$/)){
-    //         alert("Текст должен быть написан кирилицей и латинице без спец. символов длинною до 500 символов")
-    //         $(".section-form__review-form").val("")
-    //     }
-    // })
+    $.validator.addMethod("enLet", function(value, element) {
+    return /^[A-z0-9]{0,16}$/.test(value);
+    },
+    "Логин может содержать только латинские буквы и цифры ")
+        
+    $.validator.addMethod("pass", function(value, element) {
+        return /^[a-z0-9]{10,30}$/.test(value);
+        },
+        "Пароль указан неверно (разрешены только латинские буквы и цифры от 10 до 30 символов")
+
+    $('form').validate({
+        rules: {
+            email: {
+                email: true,
+                required: true
+            },
+            name: {
+                minlength: 2,
+                maxlength: 15,
+                required: true,
+                ruLet: true,
+            },
+            login: {
+                minlength: 2,
+                maxlength: 15,
+                required: true,
+                enLet: true,
+            },
+            pass: {
+                minlength: 2,
+                maxlength: 30,
+                required: true,
+                pass: true,
+            }
+
+        },
+        messages: {
+            email: {
+              required: "Требуеться заполнить данное поле",
+              email: "E-mail адресс введен не корректно"
+            },
+            name: {
+                required: "Требуеться заполнить данное поле",
+                minlength: "Длина имени должна быть больше 2 символов",
+                maxlength: "Длина имени должна быть меньше 15 символов"
+            },
+            login: {
+                required: "Требуеться заполнить данное поле",
+                minlength: "Длина логина должна быть больше 2 символов",
+                maxlength: "Длина логина должна быть меньше 15 символов"
+            },
+            pass: {
+                required: "Требуеться заполнить данное поле",
+                minlength: "Длина пароля должна быть больше 2 символов",
+                maxlength: "Длина пароля должна быть меньше 30 символов"
+            }
+          }
+      });
+
 
     $(".section-news__search-input").focus(()=>{
         $(".section-news__search-list").addClass("section-news__search-list--active")

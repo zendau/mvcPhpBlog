@@ -28,7 +28,7 @@
                 </h3>
                 <div class="section-form__input">
                     <label for="inp1">Имя*:</label>
-                    <input type="text" id="inp1" placeholder="Ваше имя" name="name" required>
+                    <input type="text" id="inp1" class="required" placeholder="Ваше имя" name="name" required>
                 </div>
                 <div class="section-form__input">
                     <label for="inp3">Логин*:</label>
@@ -73,7 +73,7 @@
         <h3 class="section-form__review">Опишите как вы нашли нас:</h3>
         <textarea class="section-form__review-form" maxlength="500" placeholder="Опишите подробно как вы нас нашли" name="desk"></textarea>
         <div class="section-form__review-flex">
-            <button class="btn section-form__review-send">ОТПРАВИТЬ ОТЗЫВ</button>
+            <button class="btn section-form__review-send">Зарегистрироваться</button>
             <p class="section-form__review-warning">* — обязательные поля</p>
         </div>
     </form>

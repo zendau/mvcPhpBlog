@@ -63,7 +63,7 @@ class AdminController extends Controller {
 		{
             $name = $_FILES['img']['name'];
             $img = $name;
-			move_uploaded_file($_FILES['img']['tmp_name'], 'public/img/news/'.$name);
+			move_uploaded_file($_FILES['img']['tmp_name'], 'public/img/news/'.$this->model->translit($name));
 		}
 
         if(!empty($_POST)){
@@ -107,7 +107,7 @@ class AdminController extends Controller {
             $i = 0;
             foreach ($_FILES['img']['name'] as $key => $value) {
                 $img.=$value.' ';
-                move_uploaded_file($_FILES['img']['tmp_name'][$i], 'public/img/tour/'.$value);
+                move_uploaded_file($_FILES['img']['tmp_name'][$i], 'public/img/tour/'.$this->model->translit($value));
                 $i++;
             }
 

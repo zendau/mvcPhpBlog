@@ -69,6 +69,7 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="../../../public/js/jquery.maskedinput.min.js"></script>
+	<script src="../../../public/js/jquery.validate.min.js"></script>
 	<script src="../../../public/js/slick.min.js"></script>
 	<script src="../../../public/js/form.js"></script>
     <script src="../../../public/js/script.js"></script>
