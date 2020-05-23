@@ -52,7 +52,7 @@ $(document).ready(function(){
         },
         "Пароль указан неверно (разрешены только латинские буквы и цифры от 10 до 30 символов")
 
-    $('form').validate({
+    $('.section-form__container').validate({
         rules: {
             email: {
                 email: true,
