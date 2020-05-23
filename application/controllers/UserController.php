@@ -34,14 +34,14 @@ class UserController extends Controller {
 			'test' => $test->createPost(),
 			'page' => $test->createPagination()
 		];
-		$this->view->render('Новости', $var);
+		$this->view->render('Новости', $var, "Новостная страница сайта", "Новости, о природе, туры, отдых");
     }
     
     public function postAction() {
 		$var = [
 			'data' => $this->model->getOnePost($this->route["page"])
 		];
-		$this->view->render('Новость', $var);
+		$this->view->render('Новость', $var, "Страница новости", "Новость, пост, тур, отдых");
 	}
 
 	public function regAction() {
@@ -54,16 +54,16 @@ class UserController extends Controller {
 			 	$this->view->message('error', $this->model->error);
 			 }
 			
-			$res_val = $this->model->validate(['login', 'email', 'pass'], $_POST);
-			if($res_val[0] =="error"){
-				$this->view->message("error", $res_val[1]);
-			}
+			// $res_val = $this->model->validate(['login', 'email', 'pass'], $_POST);
+			// if($res_val[0] =="error"){
+			// 	$this->view->message("error", $res_val[1]);
+			// }
 			$this->model->register($_POST);
 			$this->view->location("/");
 
 		}
 
-		$this->view->render('Регистрация');
+		$this->view->render('Регистрация', [], "Страница регистрации", "Регистрация, создание аккаунта, получение доступа");
 	}
 
 	public function tourAction() {
@@ -85,7 +85,7 @@ class UserController extends Controller {
 			
 		}
 
-		$this->view->render("Выбор тура", $var);
+		$this->view->render("Выбор тура", $var, "Выбор тура", "Просмотр  тура, чтение тура");
 	}
 
 	public function logoutAction() {
@@ -100,7 +100,7 @@ class UserController extends Controller {
 		$var = [
 			'data' => $this->model->getTour(),
 		];
-		$this->view->render("Выбор тура", $var);
+		$this->view->render("Выбор тура", $var, "Выбор тура", "Просмотр  тура, чтение тура");
 	}
 
 }

@@ -13,6 +13,8 @@
 	<link rel="stylesheet" href="../../../public/style/slick.css">
 	<link rel="stylesheet" href="../../../public/style/slick-theme.css">
 	<link rel="stylesheet" href="../../../public/style/slider.css">
+	<meta name="description" content="<?php echo $description; ?>">
+	<meta name="keywords" content="<?php echo $keywords; ?>">
 </head>
 <body>
     <header class="main-header container">

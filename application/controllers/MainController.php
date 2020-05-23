@@ -27,7 +27,7 @@ class MainController extends Controller {
 			}
 		}
 
-		$this->view->render('Главная страница');
+		$this->view->render('Главная страница', [],  "Главная страница сайта", "Туризм, туры");
 	}
 
 }

@@ -15,7 +15,7 @@ class AdminController extends Controller {
 			'users' => $users,
 		];
 
-		$this->view->render("Пользователи", $vars);
+		$this->view->render("Пользователи", $vars, "Просмотр всех пользователей сайта", "Пользователи, База данных, БД");
     }
     
     public function postsAction() {
@@ -26,7 +26,7 @@ class AdminController extends Controller {
         $var = [
 			'data' => $this->model->getPost()
 		];
-		$this->view->render("Посты", $var);
+		$this->view->render("Посты", $var,  "Просмотр всех постов", "Посты, База данных, БД");
     }
     
     public function applicationsAction() {
@@ -44,7 +44,7 @@ class AdminController extends Controller {
 
         $vars = $this->model->getApplications();
 
-		$this->view->render("Заявки", $vars);
+		$this->view->render("Заявки", $vars,  "Просмотр всех заявок от пользователей", "Пользователи, Заявки, База данных, БД");
     }
     
     public function infoAction() {
@@ -52,7 +52,7 @@ class AdminController extends Controller {
         
         $vars = $this->model->getInfo($this->route["id"]);
 
-		$this->view->render("Информация об пользователе", $vars);
+		$this->view->render("Информация об пользователе", $vars,  "Информация об выбранном пользователе", "Пользователь, Информация, База данных, БД");
     }
     
     public function newAction() {
@@ -72,7 +72,7 @@ class AdminController extends Controller {
         }
 
         $this->view->layout = "admin";
-		$this->view->render("Создание нового поста");
+		$this->view->render("Создание нового поста", [], "Создание нового поста", "Посты, Создание постов,  База данных, БД");
     }
     
     public function editAction() {
@@ -96,7 +96,7 @@ class AdminController extends Controller {
 			'data' => $this->model->getOnePost($this->route["id"])
         ];
         
-		$this->view->render("Редактирование поста", $var);
+		$this->view->render("Редактирование поста", $var, "Редактирование поста", "Посты, Редактирование поста,  База данных, БД");
     }
     
     public function tourNewAction() {
@@ -116,7 +116,7 @@ class AdminController extends Controller {
         }
 
         $this->view->layout = "admin";
-        $this->view->render("Создание тура");
+        $this->view->render("Создание тура", [], "Создание тура", "Туры, Создание тура,  База данных, БД");
 
     }
 
@@ -128,7 +128,7 @@ class AdminController extends Controller {
 			'data' => $this->model->getTour()
 		];
 
-        $this->view->render("Редактирование туров", $var);
+        $this->view->render("Редактирование туров", $var, "Редактирование тура", "Туры, Редактирование тура,  База данных, БД");
     }
 
     public function tourSettingAction()
@@ -153,7 +153,7 @@ class AdminController extends Controller {
         ];
 
         $this->view->layout = "admin";
-        $this->view->render("Редактирование туров", $var);
+        $this->view->render("Редактирование туров", $var, "Редактирование тура", "Туры, Редактирование тура,  База данных, БД");
     }
 
 }

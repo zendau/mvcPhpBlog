@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../../public/style/admin.css">
     <title><?php echo $title ?></title>
+    <meta name="description" content="<?php echo $description; ?>">
+	<meta name="keywords" content="<?php echo $keywords; ?>">
 </head>
 <body>
     <header class="main-header">
