@@ -12,7 +12,8 @@ class MainController extends Controller {
 		if(!empty($_POST['email'])){
 
 			if(!$this->model->checkEmailExists($_POST['email'])) {
-				mail($_POST['email'], "Новый пароль", "Ваш новый пароль 111");
+				$data = $this->model->newPass($_POST['email']);
+				mail($_POST['email'], "Новый пароль", "Ваш новый пароль $data");
 				$this->view->message("success", "Ваш новый пароль выслан на почту");
 			}else {
 				$this->view->message("error", "Данная почта не найдена");

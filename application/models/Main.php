@@ -20,7 +20,7 @@ class Main extends Model {
 				}
 				return true;
 			}
-		}
+		} 
 		
 		
 		return false;
@@ -36,6 +36,27 @@ class Main extends Model {
 			return false;
 		}
 		return true;
+	}
+
+	public function newPass($email) {
+		$chars="qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";
+		$length = intval(10);
+		$size=strlen($chars)-1;
+		$password = "";
+		$length = 10;
+		while($length--) {
+			$password.=$chars[rand(0,$size)];
+		} 
+
+		$params = [
+			'pass' => $password,
+			'email' => $email,
+		];
+
+		$this->db->query("UPDATE users set password = :pass WHERE email = :email", $params);
+
+		return $password;
+
 	}
 
 }

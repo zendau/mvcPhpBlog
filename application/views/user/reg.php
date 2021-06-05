@@ -8,7 +8,7 @@
         <p class="section-form__text">Заполните поля для создания аккаунта</p>
         <div class="section-form__flex-container">
             <div class="section-form__type">
-                <h3 class="section-form__type-title">Ваше опыт путешествий:</h3>
+                <h3 class="section-form__type-title">Ваш опыт путешествий:</h3>
                 <div class="section-form__radio">
                     <input type="radio" id="rbtn1" name="rbtn" value="Достаточный">
                     <label for="rbtn1">Достаточный</label>
